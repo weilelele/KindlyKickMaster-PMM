@@ -585,34 +585,25 @@
     .story-section { background: rgba(26,31,43,.5); }
 
     .story-author {
-      display: flex;
+      display: inline-flex;
       align-items: center;
-      gap: 20px;
-      margin-top: 32px;
-      margin-bottom: 0;
+      gap: 14px;
+      margin-top: 28px;
     }
     .author-avatar {
-      width: 88px;
-      height: 88px;
+      width: 52px;
+      height: 52px;
       border-radius: 50%;
       object-fit: cover;
       border: 2px solid rgba(34,212,224,.5);
-      box-shadow: 0 0 24px rgba(34,212,224,.15);
+      box-shadow: 0 0 16px rgba(34,212,224,.15);
       flex-shrink: 0;
     }
-    .author-meta { display: flex; flex-direction: column; gap: 4px; }
     .author-name {
       font-family: 'Orbitron', sans-serif;
-      font-size: 18px;
+      font-size: 20px;
       font-weight: 700;
       color: var(--white);
-    }
-    .author-title {
-      font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      letter-spacing: .12em;
-      color: var(--grey-text);
-      text-transform: uppercase;
     }
 
     .story-body {
@@ -830,10 +821,7 @@
       <h2 class="section-title">我为什么<span class="accent-orange">造了这个东西</span></h2>
       <div class="story-author">
         <img src="./avatar.jpg" alt="乐乐" class="author-avatar"/>
-        <div class="author-meta">
-          <div class="author-name">乐乐</div>
-          <div class="author-title">// WWWWeile Studio · 彩虹屁踢屁股专家 设计者</div>
-        </div>
+        <span class="author-name">乐乐</span>
       </div>
     </div>
 
