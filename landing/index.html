@@ -581,6 +581,144 @@
       margin: 0;
     }
 
+    /* ── STORY (creator's note) ── */
+    .story-section { background: rgba(26,31,43,.5); }
+
+    .story-body {
+      max-width: 780px;
+      margin-top: 56px;
+      display: flex;
+      flex-direction: column;
+      gap: 52px;
+    }
+
+    .story-chips {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+
+    .chip {
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      letter-spacing: .12em;
+      padding: 6px 16px;
+      border-radius: 2px;
+      text-transform: uppercase;
+    }
+    .chip-cyan   { color: var(--cyan);   border: 1px solid rgba(34,212,224,.4);  background: rgba(34,212,224,.05); }
+    .chip-orange { color: var(--orange); border: 1px solid rgba(255,90,31,.4);   background: rgba(255,90,31,.05); }
+
+    .story-text {
+      font-size: 17px;
+      line-height: 2;
+      color: var(--grey-text);
+    }
+    .story-text strong { color: var(--white); font-weight: 600; }
+    .story-text em     { color: var(--orange); font-style: normal; font-weight: 600; }
+
+    .story-pullquote {
+      padding: 28px 32px;
+      background: rgba(255,90,31,.04);
+      border: 1px solid rgba(255,90,31,.15);
+      border-left: 3px solid var(--orange);
+      border-radius: 2px;
+    }
+    .story-pullquote p {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(15px, 1.8vw, 20px);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.5;
+    }
+
+    .story-timeline {
+      position: relative;
+      padding-left: 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .story-timeline::before {
+      content: '';
+      position: absolute;
+      left: 10px; top: 10px; bottom: 10px;
+      width: 1px;
+      background: linear-gradient(to bottom, var(--orange), var(--cyan));
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-bottom: 40px;
+    }
+    .timeline-item:last-child { padding-bottom: 0; }
+
+    .timeline-dot {
+      position: absolute;
+      left: -30px; top: 4px;
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      border: 2px solid;
+      background: var(--deep);
+    }
+    .dot-orange { border-color: var(--orange); box-shadow: 0 0 8px rgba(255,90,31,.5); }
+    .dot-cyan   { border-color: var(--cyan);   box-shadow: 0 0 8px rgba(34,212,224,.5); }
+
+    .timeline-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .dot-orange ~ .timeline-content .timeline-label { color: var(--orange); }
+    .dot-cyan   ~ .timeline-content .timeline-label { color: var(--cyan); }
+
+    .timeline-content p {
+      font-size: 15px;
+      line-height: 1.9;
+      color: var(--grey-text);
+    }
+    .timeline-content strong { color: var(--white); font-weight: 600; }
+
+    .story-traits {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    @media (max-width: 700px) { .story-traits { grid-template-columns: 1fr; } }
+
+    .story-trait {
+      background: var(--grey);
+      border: 1px solid rgba(242,240,230,.06);
+      border-radius: 4px;
+      padding: 28px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .story-trait::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--cyan), transparent);
+    }
+    .story-trait-num {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 32px;
+      font-weight: 700;
+      color: rgba(34,212,224,.15);
+      margin-bottom: 14px;
+      line-height: 1;
+    }
+    .story-trait p {
+      font-size: 14px;
+      line-height: 1.85;
+      color: var(--grey-text);
+    }
+    .story-trait strong { color: var(--white); }
+
     /* ── SCROLL ANIM ── */
     [data-reveal] {
       opacity: 0;
@@ -604,6 +742,7 @@
 <nav>
   <div class="nav-logo">KINDLY<span>KICK</span>MASTER</div>
   <div class="nav-links">
+    <a href="#story">初衷</a>
     <a href="#why">背景</a>
     <a href="#trait">特质</a>
     <a href="#cases">用例</a>
@@ -646,6 +785,75 @@
         <div class="stat-num">0</div>
         <div class="stat-label">规则配置</div>
       </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- STORY -->
+<section id="story" class="story-section">
+  <div class="container">
+    <div data-reveal>
+      <p class="tag">// 设计者说</p>
+      <h2 class="section-title">我为什么<span class="accent-orange">造了这个东西</span></h2>
+    </div>
+
+    <div class="story-body">
+
+      <div data-reveal>
+        <div class="story-chips">
+          <span class="chip chip-cyan">大 P 人</span>
+          <span class="chip chip-cyan">大 FP 人</span>
+          <span class="chip chip-orange">大 ENFP</span>
+        </div>
+        <p class="story-text">
+          我非常重视如何推进项目，同时极度看重<strong>情绪价值</strong>——保证大家情绪高涨，对我来说和进度一样重要。<br/>
+          但让我自己人工管理进度？非常难。无数种科学管理方法，在大厂里学过、用过很多，
+          真正要管一个团队的那天我才明白：<em>我需要一个绝对铁面无私的助手。</em>
+        </p>
+      </div>
+
+      <div class="story-pullquote" data-reveal>
+        <p>"如果不能激发人与人之间的连接，再高效的工具也只是一台冷冰冰的机器。"</p>
+      </div>
+
+      <div class="story-timeline" data-reveal>
+        <div class="timeline-item">
+          <div class="timeline-dot dot-orange"></div>
+          <div class="timeline-content">
+            <div class="timeline-label">// V1 · 踢屁股专家</div>
+            <p>能高效整理工作内容，能 push 大家、催进度。<br/>
+            但我发现，他与人之间的<strong>连接变弱了</strong>——没法激发大家互动的欲望，<br/>
+            事件上报不及时，效率也随之变差。</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot dot-cyan"></div>
+          <div class="timeline-content">
+            <div class="timeline-label">// V2 · 彩虹屁踢屁股专家</div>
+            <p>激发团队潜力的关键，是能够「<strong>看见</strong>」他——<br/>
+            让他的行为和感受被<strong>看见</strong>、被<strong>尊重</strong>。<br/>
+            于是我把彩虹屁这个特质加了上去，才有了现在的这个产品。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="story-traits" data-reveal>
+        <div class="story-trait">
+          <div class="story-trait-num">01</div>
+          <p>既能<strong>夸夸大家</strong>、真心看见大家的付出，又不断踢大家屁股，时刻跟进项目日程。</p>
+        </div>
+        <div class="story-trait">
+          <div class="story-trait-num">02</div>
+          <p>完美融入<strong>日常工作流</strong>——把所有文档和想法一股脑丢给他，任务自动整理、通知到人。</p>
+        </div>
+        <div class="story-trait">
+          <div class="story-trait-num">03</div>
+          <p>团队专属的<strong>PMM</strong>（项目营销经理）：你只需要提供素材，他负责让所有人动起来。</p>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
