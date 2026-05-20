@@ -584,6 +584,37 @@
     /* ── STORY (creator's note) ── */
     .story-section { background: rgba(26,31,43,.5); }
 
+    .story-author {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-top: 32px;
+      margin-bottom: 0;
+    }
+    .author-avatar {
+      width: 88px;
+      height: 88px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid rgba(34,212,224,.5);
+      box-shadow: 0 0 24px rgba(34,212,224,.15);
+      flex-shrink: 0;
+    }
+    .author-meta { display: flex; flex-direction: column; gap: 4px; }
+    .author-name {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--white);
+    }
+    .author-title {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: .12em;
+      color: var(--grey-text);
+      text-transform: uppercase;
+    }
+
     .story-body {
       max-width: 780px;
       margin-top: 56px;
@@ -754,7 +785,7 @@
 <section class="hero">
   <div class="hero-glow"></div>
   <div class="container">
-    <p class="hero-eyebrow">// Putopia Collective · AI PM Agent</p>
+    <p class="hero-eyebrow">// WWWWeile Studio · AI PM Agent</p>
     <h1>
       <span style="color:var(--cyan)">彩虹屁</span>踢屁股<br/>
       <span class="line2">专家</span>
@@ -797,6 +828,13 @@
     <div data-reveal>
       <p class="tag">// 设计者说</p>
       <h2 class="section-title">我为什么<span class="accent-orange">造了这个东西</span></h2>
+      <div class="story-author">
+        <img src="./avatar.jpg" alt="乐乐" class="author-avatar"/>
+        <div class="author-meta">
+          <div class="author-name">乐乐</div>
+          <div class="author-title">// WWWWeile Studio · 彩虹屁踢屁股专家 设计者</div>
+        </div>
+      </div>
     </div>
 
     <div class="story-body">
@@ -910,7 +948,7 @@
           不说废话，不讲情面，只问结果。
         </p>
         <div class="trait-quote">
-          "杨炜乐，今天约好的 12:00 音乐朋友那边聊了吗？结果呢？"
+          "乐乐，今天约好的 12:00 音乐朋友那边聊了吗？结果呢？"
         </div>
       </div>
       <div class="trait-card trait-rainbow">
@@ -964,15 +1002,15 @@
               </div>
             </div>
             <div class="msg right">
-              <div class="msg-av user">杨</div>
+              <div class="msg-av user">乐</div>
               <div>
-                <div class="bubble user">@彩虹屁踢屁股专家 我是杨炜乐，主要负责商务对接和资源拓展</div>
+                <div class="bubble user">@彩虹屁踢屁股专家 我是乐乐，主要负责商务对接和资源拓展</div>
               </div>
             </div>
             <div class="msg">
               <div class="msg-av bot">🤖</div>
               <div>
-                <div class="bubble bot"><span class="mention">@杨炜乐</span> 认识你了！商务这块你来扛，重要的位置 ✅<br/>我发现有 3 个待分配任务提到了你的名字，已自动归到你名下。</div>
+                <div class="bubble bot"><span class="mention">@乐乐</span> 认识你了！商务这块你来扛，重要的位置 ✅<br/>我发现有 3 个待分配任务提到了你的名字，已自动归到你名下。</div>
               </div>
             </div>
           </div>
@@ -996,7 +1034,7 @@
           </div>
           <div class="chat-body">
             <div class="msg right">
-              <div class="msg-av user">W</div>
+              <div class="msg-av user">乐</div>
               <div>
                 <div class="bubble user">https://company.feishu.cn/docx/Abc123<br/>今天的战略会议记录</div>
               </div>
@@ -1010,7 +1048,7 @@
             <div class="msg">
               <div class="msg-av bot">🤖</div>
               <div>
-                <div class="bubble bot">✅ 「外星人项目战略会议」已处理<br/><br/>新增 <span class="done">8 个任务</span>：<br/><span class="warn">🔴</span> 联系德宏确认科创学院意向 → 杨炜乐<br/><span class="warn">🔴</span> 注册多个 Gmail 账号 → 纪晟<br/><span class="warn">🟡</span> 注册新 B站账号迁移内容 → 徐悦<br/>…</div>
+                <div class="bubble bot">✅ 「外星人项目战略会议」已处理<br/><br/>新增 <span class="done">8 个任务</span>：<br/><span class="warn">🔴</span> 联系德宏确认科创学院意向 → 乐乐<br/><span class="warn">🔴</span> 注册多个 Gmail 账号 → 晟晟<br/><span class="warn">🟡</span> 注册新 B站账号迁移内容 → 悦悦<br/>…</div>
               </div>
             </div>
           </div>
@@ -1034,7 +1072,7 @@
           </div>
           <div class="chat-body">
             <div class="msg right">
-              <div class="msg-av user">杨</div>
+              <div class="msg-av user">乐</div>
               <div>
                 <div class="bubble user">@彩虹屁踢屁股专家 终于搞定了。联系德宏这个跑了三天，今天他们确认合作了</div>
               </div>
@@ -1042,11 +1080,11 @@
             <div class="msg">
               <div class="msg-av bot">🤖</div>
               <div>
-                <div class="bubble bot"><span class="mention">@杨炜乐</span> 三天磨一件事还没让它凉——这种耐心很多人做不到，漂亮 🎯<br/>「联系德宏确认合作意向」已标记 <span class="done">完成 ✅</span><br/>协议这边预计什么时候能推进？</div>
+                <div class="bubble bot"><span class="mention">@乐乐</span> 三天磨一件事还没让它凉——这种耐心很多人做不到，漂亮 🎯<br/>「联系德宏确认合作意向」已标记 <span class="done">完成 ✅</span><br/>协议这边预计什么时候能推进？</div>
               </div>
             </div>
             <div class="msg right">
-              <div class="msg-av user">纪</div>
+              <div class="msg-av user">晟</div>
               <div>
                 <div class="bubble user">@彩虹屁踢屁股专家 元器件报价比预期贵了 30%，还在找其他供应商</div>
               </div>
@@ -1054,7 +1092,7 @@
             <div class="msg">
               <div class="msg-av bot">🤖</div>
               <div>
-                <div class="bubble bot"><span class="mention">@纪晟</span> 价格卡住了最消耗人，你还没放弃就是对的 💪<br/>「元器件报价比较」更新为进行中 🔄 有候选供应商了吗？</div>
+                <div class="bubble bot"><span class="mention">@晟晟</span> 价格卡住了最消耗人，你还没放弃就是对的 💪<br/>「元器件报价比较」更新为进行中 🔄 有候选供应商了吗？</div>
               </div>
             </div>
           </div>
@@ -1082,9 +1120,9 @@
               <div>
                 <div class="bubble bot">
                   收工了大家 🌙<br/><br/>
-                  <span class="mention">@纪晟</span> 今天把硬件样品出货时间全部整理完了，这个数据挺细的，辛苦了 ✅<br/><br/>
-                  <span class="mention">@徐悦</span> B站账号注册好了，内容迁移继续推，YouTube 凌晨更新记得发群里总结。<br/><br/>
-                  <span class="mention">@杨炜乐</span> 今天约好的 12:00 音乐朋友那边聊了吗？14:00 阿索那边硬件时间线出来了吗？德宏那边还没消息——明天这几个要有结果。
+                  <span class="mention">@晟晟</span> 今天把硬件样品出货时间全部整理完了，这个数据挺细的，辛苦了 ✅<br/><br/>
+                  <span class="mention">@悦悦</span> B站账号注册好了，内容迁移继续推，YouTube 凌晨更新记得发群里总结。<br/><br/>
+                  <span class="mention">@乐乐</span> 今天约好的 12:00 音乐朋友那边聊了吗？14:00 阿索那边硬件时间线出来了吗？德宏那边还没消息——明天这几个要有结果。
                 </div>
               </div>
             </div>
@@ -1109,15 +1147,15 @@
           </div>
           <div class="chat-body">
             <div class="msg right">
-              <div class="msg-av user">W</div>
+              <div class="msg-av user">乐</div>
               <div>
-                <div class="bubble user">这几个都分配给 Sam<br/><br/>🔴 邮件分组发送测试<br/>🔴 注册多个 Gmail 账号<br/>🟡 发送新账号注册链接给杨炜乐</div>
+                <div class="bubble user">这几个都分配给 Sam<br/><br/>🔴 邮件分组发送测试<br/>🔴 注册多个 Gmail 账号<br/>🟡 发送新账号注册链接给乐乐</div>
               </div>
             </div>
             <div class="msg">
               <div class="msg-av bot">🤖</div>
               <div>
-                <div class="bubble bot">✅ 已将 3 个任务分配给纪晟（Sam）：<br/>  · 邮件分组发送测试<br/>  · 注册多个 Gmail 账号<br/>  · 发送新账号注册链接给杨炜乐</div>
+                <div class="bubble bot">✅ 已将 3 个任务分配给晟晟（Sam）：<br/>  · 邮件分组发送测试<br/>  · 注册多个 Gmail 账号<br/>  · 发送新账号注册链接给乐乐</div>
               </div>
             </div>
           </div>
@@ -1175,8 +1213,8 @@
 <footer>
   <div class="container">
     <div class="footer-inner">
-      <div class="footer-logo">PUTOPIA <span>COLLECTIVE</span></div>
-      <p>BUILDING BETTER WORLDS, TOGETHER.</p>
+      <div class="footer-logo">WWWWeile <span>Studio</span></div>
+      <p>做温暖浪漫的AI产品</p>
       <p>© 2025 · MIT License</p>
     </div>
   </div>
