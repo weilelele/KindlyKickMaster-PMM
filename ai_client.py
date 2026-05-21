@@ -114,6 +114,18 @@ _TOOLS = [
         },
     },
     {
+        "name": "register_member",
+        "description": "注册新成员。当有人自我介绍但不在团队成员列表中时调用（sender_open_id 由系统传入）",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "name": {"type": "string", "description": "成员姓名，从自我介绍中提取"},
+                "bio":  {"type": "string", "description": "角色/职责描述（20字以内）"},
+            },
+            "required": ["name"],
+        },
+    },
+    {
         "name": "reply",
         "description": "向用户发送回复（当不需要任务操作时，或作为一系列操作后的总结）",
         "input_schema": {
@@ -134,6 +146,7 @@ async def process_message(
     sender_name: str,
     tasks: list[dict],
     members: list[dict],
+    sender_registered: bool = True,
 ) -> list:
     """
     Route any message through Claude tool_use.
@@ -154,7 +167,7 @@ async def process_message(
         messages=[
             {
                 "role": "user",
-                "content": f"""发送者：{sender_name}
+                "content": f"""发送者：{sender_name}{"（未注册，不在团队成员列表中）" if not sender_registered else ""}
 消息内容：
 {text}
 
@@ -164,7 +177,8 @@ async def process_message(
 团队成员：
 {members_str}
 
-请根据消息内容调用合适的工具完成操作，可连续调用多个工具。最后必须调用 reply 工具发送回复。""",
+请根据消息内容调用合适的工具完成操作，可连续调用多个工具。最后必须调用 reply 工具发送回复。
+如果发送者未注册且消息是自我介绍，请先调用 register_member 工具完成注册。""",
             }
         ],
     )

@@ -67,6 +67,13 @@ async def handle_message(event_body: dict) -> None:
             m.get("id", {}).get("open_id") == settings.bot_open_id
             for m in mentions
         )
+        if bot_mentioned and not member:
+            # Unknown member — notify owner so they can add manually
+            await fc.send_to_user(
+                settings.owner_open_id,
+                f"⚠️ 有未注册成员在群里 @ 我，无法自动识别其姓名（可能是外部协作者）。\n"
+                f"如需加入，请发：\n/添加成员 姓名 {sender_open_id}"
+            )
         if bot_mentioned:
             send = lambda text: fc.send_to_chat(chat_id, text)
             await _handle_group_mention(sender_open_id, sender_name, message_type, msg, chat_id, message_id, send)
@@ -176,8 +183,9 @@ async def _handle_content(
 ) -> None:
     tasks   = await bc.list_active_records()
     members = db.get_members()
+    sender_registered = any(m["feishu_user_id"] == sender_open_id for m in members) if sender_open_id else True
 
-    tool_calls = await ai.process_message(text, sender_name, tasks, members)
+    tool_calls = await ai.process_message(text, sender_name, tasks, members, sender_registered)
     log.info("Tool calls from Claude: %s", [c.name for c in tool_calls])
 
     reply_text: str | None = None
@@ -245,6 +253,18 @@ async def _handle_content(
                 tasks.remove(rec)   # keep snapshot current
             log.info("Deleted %d records: %s", len(deleted_titles), deleted_titles)
             tasks_modified = True
+
+        elif name == "register_member":
+            reg_name = inp.get("name", sender_name)
+            if sender_open_id and reg_name and reg_name != "未知成员":
+                try:
+                    new_member = db.create_member(reg_name, sender_open_id)
+                    members.append(new_member)   # refresh local list
+                    log.info("Registered member via self-intro: %s (%s)", reg_name, sender_open_id)
+                    if inp.get("bio"):
+                        db.update_member_bio(sender_open_id, inp["bio"])
+                except Exception as e:
+                    log.warning("register_member failed: %s", e)
 
         elif name == "log_progress":
             member = db.get_member_by_open_id(sender_open_id) if sender_open_id else None
